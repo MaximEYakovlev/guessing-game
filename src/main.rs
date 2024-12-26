@@ -1,6 +1,7 @@
 mod game;
 mod input;
 mod random;
+mod result_handler;
 
 fn main() {
     println!("Guess the number!");
@@ -14,13 +15,9 @@ fn main() {
         match input::get_guess() {
             Some(guess) => {
                 println!("You guessed: {}", guess);
-                match game.check_guess(guess) {
-                    std::cmp::Ordering::Less => println!("Too small!"),
-                    std::cmp::Ordering::Greater => println!("Too big!"),
-                    std::cmp::Ordering::Equal => {
-                        println!("You win!");
-                        break;
-                    }
+                let result = result_handler::handle_result(game.check_guess(guess));
+                if result {
+                    break;
                 }
             }
             None => {
