@@ -2,26 +2,27 @@ mod game;
 mod input;
 mod random;
 mod result_handler;
+mod output;
 
 fn main() {
-    println!("Guess the number!");
+    output::print_welcome_message();
 
     let secret_number = random::generate_random_number(1..=100);
     let game = game::Game::new(secret_number);
 
     loop {
-        println!("Please input your guess.");
+        output::print_prompt();
 
         match input::get_guess() {
             Some(guess) => {
-                println!("You guessed: {}", guess);
+                output::print_guess(guess);
                 let result = result_handler::handle_result(game.check_guess(guess));
                 if result {
                     break;
                 }
             }
             None => {
-                println!("Invalid input. Please enter a number.");
+                output::print_invalid_input();
                 continue;
             }
         }

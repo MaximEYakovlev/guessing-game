@@ -57,6 +57,7 @@ cargo run
 src/
 ├── game.rs           // Game logic: compare guesses with the secret number
 ├── input.rs          // Handles user input
+├── output.rs         // Output of messages to the user
 ├── random.rs         // Generates the random secret number
 ├── result_handler.rs // Game result processing
 └── main.rs           // Entry point of the program
