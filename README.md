@@ -55,10 +55,11 @@ cargo run
 ## Project Structure
 ```
 src/
-├── game.rs        // Game logic: compare guesses with the secret number
-├── input.rs       // Handles user input
-├── random.rs      // Generates the random secret number
-└── main.rs        // Entry point of the program
+├── game.rs           // Game logic: compare guesses with the secret number
+├── input.rs          // Handles user input
+├── random.rs         // Generates the random secret number
+├── result_handler.rs // Game result processing
+└── main.rs           // Entry point of the program
 ```
 
 
