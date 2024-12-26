@@ -1,7 +1,6 @@
 mod game;
+mod input;
 mod random;
-
-use std::io;
 
 fn main() {
     println!("Guess the number!");
@@ -12,25 +11,21 @@ fn main() {
     loop {
         println!("Please input your guess.");
 
-        let mut guess = String::new();
-
-        io::stdin().read_line(&mut guess).expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                continue;
+        match input::get_guess() {
+            Some(guess) => {
+                println!("You guessed: {}", guess);
+                match game.check_guess(guess) {
+                    std::cmp::Ordering::Less => println!("Too small!"),
+                    std::cmp::Ordering::Greater => println!("Too big!"),
+                    std::cmp::Ordering::Equal => {
+                        println!("You win!");
+                        break;
+                    }
+                }
             }
-        };
-
-        println!("You guessed: {guess}");
-
-        match game::Game::check_guess(&game, guess) {
-            std::cmp::Ordering::Less => println!("Too small!"),
-            std::cmp::Ordering::Greater => println!("Too big!"),
-            std::cmp::Ordering::Equal => {
-                println!("You win!");
-                break;
+            None => {
+                println!("Invalid input. Please enter a number.");
+                continue;
             }
         }
     }
