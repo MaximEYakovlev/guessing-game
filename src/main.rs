@@ -1,8 +1,10 @@
 mod game;
-mod input;
+mod engine;
+mod output;
 mod random;
 mod result_handler;
-mod output;
+
+use engine::input::InputHandler;
 
 fn main() {
     output::print_welcome_message();
@@ -10,10 +12,12 @@ fn main() {
     let secret_number = random::generate_random_number(1..=100);
     let game = game::Game::new(secret_number);
 
+    let input = engine::input::ConsoleInput;
+
     loop {
         output::print_prompt();
 
-        match input::get_guess() {
+        match input.read() {
             Some(guess) => {
                 output::print_guess(guess);
                 let result = result_handler::handle_result(game.check_guess(guess));
