@@ -7,13 +7,12 @@ use engine::input::InputHandler;
 use engine::output::OutputHandler;
 
 fn main() {
-    let output = engine::output::ConsoleOutput;
-    output.print_welcome_message();
-
+    let input: &dyn InputHandler = &engine::input::ConsoleInput;
+    let output: &dyn OutputHandler = &engine::output::ConsoleOutput;
     let secret_number = random::generate_random_number(1..=100);
     let game = game::Game::new(secret_number);
 
-    let input = engine::input::ConsoleInput;
+    output.print_welcome_message();
 
     loop {
         output.print_prompt();
