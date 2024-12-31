@@ -1,18 +1,19 @@
-use std::cmp::Ordering;
+use engine::output::OutputHandler;
+use game::GuessResult;
 
-pub fn handle_result(ordering: Ordering) -> bool {
-    match ordering {
-        Ordering::Less => {
-            println!("Too small!");
-            false
-        }
-        Ordering::Greater => {
-            println!("Too big!");
-            false
-        }
-        Ordering::Equal => {
-            println!("You win!");
+pub fn handle_result(output: &dyn OutputHandler, result: GuessResult) -> bool {
+    match result {
+        GuessResult::Correct => {
+            output.print("Congratulations! You guessed correctly.");
             true
+        }
+        GuessResult::TooLow => {
+            output.print("Too low! Try again.");
+            false
+        }
+        GuessResult::TooHigh => {
+            output.print("Too high! Try again.");
+            false
         }
     }
 }
