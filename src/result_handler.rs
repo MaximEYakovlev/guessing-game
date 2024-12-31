@@ -1,5 +1,5 @@
-use engine::output::OutputHandler;
-use game::GuessResult;
+use crate::engine::output::OutputHandler;
+use crate::game::GuessResult;
 
 pub fn handle_result(output: &dyn OutputHandler, result: GuessResult) -> bool {
     match result {
