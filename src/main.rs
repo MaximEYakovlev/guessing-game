@@ -20,8 +20,10 @@ fn main() {
         match input.read() {
             Some(guess) => {
                 output.print_guess(guess);
-                let result = result_handler::handle_result(game.check_guess(guess));
-                if result {
+
+                let is_correct = result_handler::handle_result(game.check_guess(guess));
+
+                if is_correct {
                     break;
                 }
             }
