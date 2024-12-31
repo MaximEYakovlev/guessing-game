@@ -1,10 +1,10 @@
 mod game;
 mod engine;
 mod random;
-mod result_handler;
 
 use engine::input::InputHandler;
 use engine::output::OutputHandler;
+use engine::result_handler;
 
 fn main() {
     let input: &dyn InputHandler = &engine::input::ConsoleInput;
