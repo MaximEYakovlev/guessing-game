@@ -1,4 +1,5 @@
 pub trait OutputHandler {
+    fn print(&self, message: &str);
     fn print_welcome_message(&self);
     fn print_prompt(&self);
     fn print_guess(&self, guess: u32);
@@ -8,6 +9,10 @@ pub trait OutputHandler {
 pub struct ConsoleOutput;
 
 impl OutputHandler for ConsoleOutput {
+    fn print(&self, message: &str) {
+        println!("{message}");
+    }
+
     fn print_welcome_message(&self) {
         println!("Welcome to the Guessing Game!");
     }
