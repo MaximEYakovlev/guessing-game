@@ -1,6 +1,6 @@
-use std::io;
-
 pub mod input {
+    use std::io;
+
     pub trait InputHandler {
         fn read(&self) -> Option<u32>;
     }
