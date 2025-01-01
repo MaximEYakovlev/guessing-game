@@ -1,14 +1,14 @@
 mod game;
-mod engine;
+mod modules;
 mod random;
 
-use engine::input::InputHandler;
-use engine::output::OutputHandler;
-use engine::result_handler;
+use modules::input::InputHandler;
+use modules::output::OutputHandler;
+use modules::result_handler;
 
 fn main() {
-    let input: &dyn InputHandler = &engine::input::ConsoleInput;
-    let output: &dyn OutputHandler = &engine::output::ConsoleOutput;
+    let input: &dyn InputHandler = &modules::input::ConsoleInput;
+    let output: &dyn OutputHandler = &modules::output::ConsoleOutput;
     let secret_number = random::generate_random_number(1..=100);
     let game = game::Game::new(secret_number);
 

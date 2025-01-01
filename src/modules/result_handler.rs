@@ -1,4 +1,4 @@
-use crate::engine::output::OutputHandler;
+use crate::modules::output::OutputHandler;
 use crate::game::GuessResult;
 
 pub fn handle_result(output: &dyn OutputHandler, result: GuessResult) -> bool {
