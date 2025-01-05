@@ -1,19 +1,21 @@
-use crate::modules::output::output::OutputHandler;
-use crate::game::GuessResult;
+pub mod result_handler {
+    use crate::modules::output::output::OutputHandler;
+    use crate::game::GuessResult;
 
-pub fn handle_result(output: &dyn OutputHandler, result: GuessResult) -> bool {
-    match result {
-        GuessResult::Correct => {
-            output.print("Congratulations! You guessed correctly.");
-            true
-        }
-        GuessResult::TooLow => {
-            output.print("Too low! Try again.");
-            false
-        }
-        GuessResult::TooHigh => {
-            output.print("Too high! Try again.");
-            false
+    pub fn handle_result(output: &dyn OutputHandler, result: GuessResult) -> bool {
+        match result {
+            GuessResult::Correct => {
+                output.print("Congratulations! You guessed correctly.");
+                true
+            }
+            GuessResult::TooLow => {
+                output.print("Too low! Try again.");
+                false
+            }
+            GuessResult::TooHigh => {
+                output.print("Too high! Try again.");
+                false
+            }
         }
     }
 }

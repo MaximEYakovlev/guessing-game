@@ -21,7 +21,10 @@ fn main() {
             Some(guess) => {
                 output.print_guess(guess);
 
-                let is_correct = result_handler::handle_result(output, game.check_guess(guess));
+                let is_correct = result_handler::result_handler::handle_result(
+                    output,
+                    game.check_guess(guess)
+                );
 
                 if is_correct {
                     break;
