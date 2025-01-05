@@ -3,12 +3,12 @@ mod modules;
 mod random;
 
 use modules::input::input::InputHandler;
-use modules::output::OutputHandler;
+use modules::output::output::OutputHandler;
 use modules::result_handler;
 
 fn main() {
     let input: &dyn InputHandler = &modules::input::input::ConsoleInput;
-    let output: &dyn OutputHandler = &modules::output::ConsoleOutput;
+    let output: &dyn OutputHandler = &modules::output::output::ConsoleOutput;
     let secret_number = random::generate_random_number(1..=100);
     let game = game::Game::new(secret_number);
 
