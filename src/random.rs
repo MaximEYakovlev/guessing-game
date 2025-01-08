@@ -20,8 +20,9 @@ mod tests {
     #[test]
     fn test_generate_random_number_within_range() {
         let range = 1..=10;
+        let generator = RandomGenerator;
         for _ in 0..100 {
-            let result = RandomGenerator::generate_random_number(range.clone());
+            let result = generator.generate_random_number(range.clone());
             assert!(range.contains(&result), "Result {} is not within range {:?}", result, range);
         }
     }
